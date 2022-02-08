@@ -1,0 +1,55 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-sm-10 mx-5">
+    <div class="col-sm-6 mx-5 form-group">
+        <h3 class="text-white my-5">Signup Page</h3>
+        
+        <div class="message">
+            {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" id="message_container" role="alerts">{{message}}</div>
+            {% endfor %}
+            {% endif %}
+        </div>
+
+
+        <div class="form-group">
+            <form method="post" action="" >
+                {% csrf_token %}
+                <label>First Name : </label>
+                <input type="text" name="firstname" class="form-control" required><br>
+                <label>Last Name : </label>
+                <input type="text" name="lastname" class="form-control "><br>
+                <label>Email : </label>
+                <input type="email" name="email" class="form-control" required><br>
+                <label>Age : </label>
+                <input type="number" name="age" class="form-control "><br>
+                <label>Username : </label>
+                <input type="text" name="username" class="form-control " required><br>
+                <label>Password : </label>
+                <input type="password" name="password1" class="form-control " required><br>
+                <label>Confirm Password : </label>
+                <input type="password" name="password2" class="form-control " required><br>
+                <!-- <label>Choose Country : </label><br> -->
+                <input type="submit" value="Signup" class="btn btn-success mb-2">
+            </form>
+        </div>
+        <!-- <form action="" method="post" novalidate>
+            {% csrf_token %}
+            {% for fm in form %}
+            <div class="form-group">
+                {{fm.label_tag}} {{fm}} {{fm.errors | striptags}}
+            </div>
+            {% endfor %}
+            <input type="submit" value="Submit" class="btn btn-success my-2">
+            {% if form.non_field_errors %}
+            {% for error in form.non_field_errors %}
+            <p class="alert alert-danger my-3">{{error}}</p>
+            {% endfor %}
+            {% endif %}
+        </form> -->
+    </div>
+</div>
+{% endblock content %}

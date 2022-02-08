@@ -1,0 +1,72 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-sm-8">
+    <h3 class="text-white my-5">Dashboard Page</h3>
+
+    <div class="message">
+        {% if messages %}
+        {% for message in messages %}
+        <div class="alert alert-{{message.tags}}" id="message_container">{{message}}</div>
+        {% endfor %}
+        {% endif %}
+    </div>
+
+    {% if user is null %}
+    <div>
+        <h2>Login to view the dashboard</h2>
+    </div>
+    {% else %}
+    <div class="newpost">
+        <a href="newpost" class="btn btn-primary">Create Post</a>
+    </div>
+    <div class="col-sm-12 my-5" style="background-color: aquamarine; color: brown;">
+        <h2>
+            <center>Previous Posts</center>
+        </h2>
+    </div>
+    {% if posts %}
+    <div class="showpost my-4">
+        <table>
+            <tr>
+                <thead>
+                    <td>ID</td>
+                    <td>Title</td>
+                    <td>Description</td>
+                    <td>Action</td>
+                </thead>
+            </tr>
+            {% for post in posts %}
+            <tr>
+                <td>{{post.id}}</td>
+                <td>{{post.title}}</td>
+                <td>{{post.description}}</td>
+                <td>
+                    <div class="col-sm-3">
+                        <a href="{% url 'updatepost' post.id %}" class="btn btn-warning">Edit</a>
+                        <a href="{% url 'deletepost' post.id %}" class="btn btn-danger">Delete</a>
+                    </div>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% else %}
+    <div class="nopost">
+        <h4>No Previous Posts found....</h4>
+        <p>Create your first Post...</p>
+        <a href="newpost" class="btn btn-primary">Create First Post</a>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+<script>
+    var message_ele = document.getElementById("message_container");
+
+    setTimeout(function () {
+        message_ele.style.display = "none";
+    }, 3000);
+</script>
+
+{% endblock content %}

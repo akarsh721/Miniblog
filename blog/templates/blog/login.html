@@ -1,0 +1,28 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-sm-6 myform">
+    <h3 class="text-white my-5">Login Page</h3>
+    <div class="message">
+        {% if messages %}
+            {% for message in messages %}
+                <div class="alert alert-{{message.tags}}" id="message_container" role="alert">{{message}}</div>
+            {% endfor %}
+        {% endif %}
+    </div>
+    <div class="form-group">
+        <form action="" method="post">
+            {% csrf_token %}
+            <label>Username : </label>
+            <input type="text" name="username" class="form-control" required><br>
+            <label>Paswword : </label>
+            <input type="password" name="password" class="form-control" required><br>
+            <input type="submit" value="Login" class="btn btn-primary">
+            <a href="/adminlogin" class="btn btn-secondary mx-4">Admin Login</a>
+        </form>
+    </div>
+
+</div>
+
+{% endblock content %}

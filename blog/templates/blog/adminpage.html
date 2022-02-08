@@ -1,0 +1,39 @@
+{% extends 'blog/base.html' %}
+{% load static %}
+{% block content %}
+
+<div class="col-sm-8">
+    <h3 class="text-white my-5">Admin Panel</h3>
+    <div class="col-sm-12 my-5" style="background-color: aquamarine; color: brown;">
+        <h2>
+            <center>Registered Authors</center>
+        </h2>
+    </div>
+    {% if authordata %}
+    <div class="showauthors">
+        <table>
+            <tr>
+                <thead>
+                    <td>ID</td>
+                    <td>Name</td>
+                    <td>Email</td>
+                    <td>Action</td>
+                </thead>
+            </tr>
+            {% for data in authordata %}
+            <tr>
+                <td>{{data.id}}</td>
+                <td>{{data.firstname}}</td>
+                <td>{{data.email}}</td>
+                <td>
+                    <!-- <a href="{% url 'showpost' data. %}" class="btn btn-primary mx-2">Show Posts</a> -->
+                    <a href="{% url 'removeauthor' data.id %}" class="btn btn-danger">Remove Author</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
+    {% endif %}
+</div>
+
+{% endblock content %}
