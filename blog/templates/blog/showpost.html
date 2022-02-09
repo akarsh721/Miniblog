@@ -5,7 +5,8 @@
 <div class="col-sm-8">
     <h3 class="text-white my-5">Author Posts Page</h3>
 
-    {% for post in authorposts %}
+    {% if posts %}
+    {% for post in posts %}
     <div class="jumbotron jumbotron-fluid jumbotron-color my-5">
         <div class="container">
 
@@ -20,6 +21,7 @@
         </div>
     </div>
     {% endfor %}
+    {% endif %}
 </div>
 
 {% endblock content %}

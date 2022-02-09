@@ -26,7 +26,8 @@
                 <td>{{data.firstname}}</td>
                 <td>{{data.email}}</td>
                 <td>
-                    <!-- <a href="{% url 'showpost' data. %}" class="btn btn-primary mx-2">Show Posts</a> -->
+                    <a href="{% url 'showpost' data.username %}" class="btn btn-primary mx-2">Show Posts</a>
+                    <!-- <a href="/showpost/{{data.username}}" class="btn btn-primary mx-2">Show Posts</a> -->
                     <a href="{% url 'removeauthor' data.id %}" class="btn btn-danger">Remove Author</a>
                 </td>
             </tr>

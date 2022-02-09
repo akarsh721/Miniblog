@@ -14,7 +14,7 @@ urlpatterns = [
     path('dashboard/updatepost/<int:id>',views.updatepost,name="updatepost"),
     path('dashboard/deletepost/<int:id>',views.deletepost,name="deletepost"),
     path('adminlogin/',views.adminlogin,name="adminlogin"),
-    path('showpost/<int:id>',views.showpost,name="showpost"),
+    path('adminpanel/showpost/<username>',views.showpost,name="showpost"),
     path('adminpanel/',views.adminpanel,name="adminpanel"),
     path('adminpanel/removeauthor/<int:id>',views.adminRemoveAuthor,name="removeauthor"),
 ]

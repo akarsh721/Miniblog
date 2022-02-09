@@ -1,3 +1,4 @@
+from turtle import pos
 from django.http import HttpResponseRedirect
 from django.shortcuts import redirect, render
 from .forms import signupAuthor, Postfm
@@ -19,7 +20,8 @@ def dashbaord(request):
     loggedinUser = request.session.get('user')
     # loggedinUserObj = AuthorRegister.objects.get(username = loggedinUser)
     loggedinUserPosts = Post.objects.filter(author = loggedinUser)
-    # print(loggedinUserPosts)
+    print(loggedinUserPosts)
+    # print(loggedinUserPosts.author)
     return render(request,'blog/dashboard.html',{'posts':loggedinUserPosts,'user':loggedinUser})
 
 def about(request):
@@ -132,9 +134,10 @@ def adminpanel(request):
     authordata = AuthorRegister.objects.all()
     return render(request,'blog/adminpage.html',{'authordata':authordata})
 
-def showpost(request,id):
-    postObj = Post.objects.filter(pk = id)
-    return redirect(request,"blog/showpost.html",{'authorposts' : postObj})
+def showpost(request,username):
+    postObj = Post.objects.filter(author = username)
+    # print(postObj)
+    return render(request,'blog/showpost.html',{'posts':postObj})
 
 def adminRemoveAuthor(request,id):
     authorObj = AuthorRegister.objects.get(pk = id)

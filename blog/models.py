@@ -17,3 +17,6 @@ class Post(models.Model):
     title = models.CharField(max_length=70)
     description = models.TextField()
     author=models.CharField(default='NA', max_length=30)
+
+    def __str__(self) -> str:
+        return self.title
