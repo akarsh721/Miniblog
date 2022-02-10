@@ -11,8 +11,9 @@ from django.contrib.auth import authenticate, logout
 
 def home(request):
     posts = Post.objects.all()
-    if posts:
-        return render(request,'blog/home.html',{'posts':posts})
+    admin_posts = Post.objects.filter(author = 'admin')
+    if posts or admin_posts:
+        return render(request,'blog/home.html',{'posts':posts,'admin_posts':admin_posts})
     else:
         return render(request,'blog/home.html')
 

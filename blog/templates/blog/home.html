@@ -10,20 +10,33 @@
         {% endfor %}
     {% endif %}
 
-    {% for post in posts %}
+    {% for post in admin_posts %}
     <div class="jumbotron jumbotron-fluid jumbotron-color my-5">
         <div class="container">
-            
             <h1 class="display-4" style="font-weight: bold;">{{post.title}}</h1>
             <p class="lead">{{post.description}}</p>
             <div class="col-sm-2-end">
                 <small>
                     --{{post.author}}
                 </small>
-            </div>
-            
+            </div>    
         </div>
     </div>
+    {% endfor %}
+    {% for post in posts %}
+    {% if post.author != 'admin' %}
+    <div class="jumbotron jumbotron-fluid jumbotron-color my-5">
+        <div class="container">
+            <h1 class="display-4" style="font-weight: bold;">{{post.title}}</h1>
+            <p class="lead">{{post.description}}</p>
+            <div class="col-sm-2-end">
+                <small>
+                    --{{post.author}}
+                </small>
+            </div>    
+        </div>
+    </div>
+    {% endif %}
     {% endfor %}
 
 </div>
